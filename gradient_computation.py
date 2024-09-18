@@ -113,6 +113,7 @@ def get_llm(model, cache_dir="llm_weights"):
     )
     print("printing gpu allocation for all the layers")
     print(model.hf_device_map)
+    print(model.config)
     model.seqlen = 2048
     return model
 
@@ -123,7 +124,7 @@ class gradient_computation:
         self.gradients_l2 = dict()
         self.nsample = 0
         self.scale = scale
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = torch.device('cpu')
         self.gradients_init()
 
     def gradients_init(self):
