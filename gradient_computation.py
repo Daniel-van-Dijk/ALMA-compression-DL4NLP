@@ -123,7 +123,7 @@ class gradient_computation:
         self.gradients_l2 = dict()
         self.nsample = 0
         self.scale = scale
-        self.device = torch.device("cpu") 
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.gradients_init()
 
     def gradients_init(self):
@@ -176,7 +176,7 @@ if __name__ == "__main__":
 
 
     layers = model.model.layers 
-    #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     if "model.embed_tokens" in model.hf_device_map:
         device = model.hf_device_map["model.embed_tokens"]
