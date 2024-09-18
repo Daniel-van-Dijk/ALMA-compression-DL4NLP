@@ -107,7 +107,7 @@ def get_llm(model, cache_dir="llm_weights"):
     model = AutoModelForCausalLM.from_pretrained(
         model, 
         torch_dtype=torch.float16, 
-        cache_dir=cache_dir, 
+        #cache_dir=cache_dir, 
         low_cpu_mem_usage=True, 
         device_map="auto"
     )
