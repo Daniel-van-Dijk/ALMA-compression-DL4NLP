@@ -71,8 +71,8 @@ def get_wikitext2(nsamples, seed, seqlen, tokenizer):
 def get_c4(nsamples, seed, seqlen, tokenizer):
     # Load train and validation datasets
     print("trying to load allenai-c4 dataset........")
-    traindata = load_dataset('allenai/c4', 'allenai--c4', data_files={'train': 'en/c4-train.00000-of-01024.json.gz'}, split='train')
-    valdata = load_dataset('allenai/c4', 'allenai--c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation')
+    traindata = load_dataset('allenai/c4', data_files={'train': 'en/c4-train.00000-of-01024.json.gz'}, split='train')
+    valdata = load_dataset('allenai/c4', data_files={'validation': 'en/c4-validation.00000-of-00008.json.gz'}, split='validation')
 
     # Generate samples from training set
     random.seed(seed)
@@ -176,7 +176,8 @@ if __name__ == "__main__":
 
 
     layers = model.model.layers 
-    # device=torch.device("cuda:0")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
     if "model.embed_tokens" in model.hf_device_map:
         device = model.hf_device_map["model.embed_tokens"]
     print("loading calibdation data")
