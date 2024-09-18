@@ -15,6 +15,15 @@ print('transformers', version('transformers'))
 print('accelerate', version('accelerate'))
 print('# of gpus: ', torch.cuda.device_count())
 
+import os
+from huggingface_hub import login
+
+# Set your HF token (replace 'token' with the actual token)
+os.environ["HUGGINGFACE_TOKEN"] = "token"
+
+# n
+login(token=os.getenv("HUGGINGFACE_TOKEN"))
+
 def find_layers(module, layers=[nn.Linear], name=''):
     """
     Recursively find the layers of a certain type in a module.
@@ -107,7 +116,7 @@ def get_llm(model, cache_dir="llm_weights"):
     model = AutoModelForCausalLM.from_pretrained(
         model, 
         torch_dtype=torch.float16, 
-        #cache_dir=cache_dir, 
+        cache_dir=cache_dir, 
         low_cpu_mem_usage=True, 
         device_map="auto"
     )
