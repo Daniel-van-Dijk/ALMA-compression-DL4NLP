@@ -1,0 +1,16 @@
+%\subsection{Pruning Techniques}
+
+Pruning is a well-established approach for compressing neural networks by removing unnecessary parameters, resulting in a more sparse model. Early works, such as \cite{han2015deepcompression}, introduced the concept of \textit{magnitude pruning}, which removes weights based on their magnitude, under the assumption that small weights contribute less to model performance. However, magnitude pruning does not account for the role of activations or gradients during training, potentially leading to the removal of important parameters. To address this, Sun et al. \cite{sun2023pruningllm} proposed \textit{Wanda}, a pruning technique that uses both weight magnitude and input activations to determine which parameters to prune, improving upon earlier methods. Similarly, Das et al. \cite{das2023beyondsize} introduced \textit{GBLM-Pruner}, which leverages gradients to guide pruning decisions, offering improved sensitivity to the training dynamics of large models. Despite these advances, pruning methods still require careful hyperparameter tuning and may necessitate retraining to recover performance. Additionally, extreme pruning can lead to degraded model performance if not carefully balanced.
+
+%\subsection{Quantization Techniques}
+
+Quantization reduces the precision of model weights and activations, typically from 32-bit to lower-bit representations such as 8-bit or 4-bit. This drastically reduces the memory footprint and speeds up inference. However, low-bit quantization (e.g., 4-bit or lower) can lead to noticeable performance degradation. A more recent advancement, \textit{QLoRA (Quantized Low-Rank Adaptation)}, was introduced by Dettmers et al. \cite{dettmers2024qlora}. This method allows efficient fine-tuning of 4-bit quantized LLMs by leveraging Low-Rank Adapters (LoRA), enabling models such as LLaMA-2 to be fine-tuned on a single GPU without significant performance loss.
+
+%\subsection{Knowledge Distillation}
+
+Knowledge distillation is a technique in which a smaller \textit{student model} is trained to mimic the outputs of a larger \textit{teacher model}. This allows the student model to achieve similar performance to the teacher while being much smaller and more efficient. However, knowledge distillation often suffers from a performance gap between the teacher and student models, especially when the student is significantly smaller.
+
+%\subsection{The \textit{ALMA} model}
+
+ The \textit{ALMA} model, introduced by Xu et al. \cite{xu2023boostingMT}, enhances translation performance by fine-tuning large language models on monolingual data followed by high-quality parallel data. This approach yields significant improvements, including gains of up to 12 BLEU points in multiple translation directions compared to zero-shot performance. Despite these successes, the challenge of balancing compression with translation quality remains. Aggressive compression can result in degraded translation performance, particularly for low-resource language pairs.
+
