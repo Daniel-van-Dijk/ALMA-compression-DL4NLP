@@ -1,6 +1,6 @@
 import argparse
 import torch
-from peft import PeftModel
+# from peft import PeftModel
 from transformers import AutoModelForCausalLM, LlamaTokenizer
 from tqdm import tqdm 
 
@@ -15,15 +15,16 @@ def get_parser():
     parser.add_argument('--model', required=True)
     parser.add_argument('--beam', type=int, required=True)
     parser.add_argument('--gen_max_tokens', type=int, default=256)
-    parser.add_argument('--batch_size', type=int, default=8, help='Batch size for generation')
+    parser.add_argument('--batch_size', type=int, default=4, help='Batch size for generation')
     return parser
 
 LANG_MAP = {
-    'eng_Latn': 'English',
-    'deu_Latn': 'German',
-    'ces_Latn': 'Czech',
-    'rus_Cyrl': 'Russian',
-    'zho_Hans': 'Chinese'
+    'en': 'English',
+    'de': 'German',
+    'cs': 'Czech',
+    'is': 'Icelandic',
+    'zh': 'Chinese',
+    'ru': 'Russian',
 }
 
 def dynamic_batching(tokenizer, texts, batch_size, max_length):
@@ -54,12 +55,16 @@ def main():
     dtype_map = {'bfloat16': torch.bfloat16, 'float16': torch.float16, 'float32': torch.float32}
     dtype = dtype_map.get(args.dtype, torch.float)
 
+    print('[0]: Loading model...')
     # load model and tokenizer
     model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=dtype, device_map="auto")
     #model = PeftModel.from_pretrained(model, args.ckpt) # load when you have lora
+    print('[1]: Done loading model...')
     model.eval()
     tokenizer = LlamaTokenizer.from_pretrained(args.model)
     tokenizer.pad_token_id = tokenizer.eos_token_id
+
+    print('[2]: Done loading tokenizer...')
 
     src = LANG_MAP[args.src]
     tgt = LANG_MAP[args.tgt]
@@ -79,10 +84,10 @@ def main():
             # prepend prompt
             prompt = f"Translate this from {src} to {tgt}:\n{src}: {line}\n{tgt}:"
             prompts.append(prompt)
-
+        
         # Tokenize with truncation and dynamic padding up to the longest sequence in the batch
         inputs = tokenizer(prompts, return_tensors="pt", padding=True, ).to('cuda')
-
+        
         # generate
         with torch.no_grad():
             generated_ids = model.generate(
