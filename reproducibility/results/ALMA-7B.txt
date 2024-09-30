@@ -1,0 +1,40 @@
+ALMA-7B: evaluating from en to is
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 26.10 56.3/31.8/20.2/13.2 (BP = 0.995 ratio = 0.995 hyp_len = 25098 ref_len = 25233)
+output/from_english/icelandic/ALMA-7B.txt	score: 0.8569
+________________________________________________________
+ALMA-7B: evaluating from en to de
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 30.16 60.8/35.9/23.6/16.0 (BP = 1.000 ratio = 1.017 hyp_len = 39592 ref_len = 38914)
+output/from_english/german/ALMA-7B.txt	score: 0.8578
+________________________________________________________
+ALMA-7B: evaluating from en to zh
+BLEU|nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.4.3 = 36.79 64.5/42.9/30.0/22.0 (BP = 1.000 ratio = 1.031 hyp_len = 59039 ref_len = 57277)
+output/from_english/chinese/ALMA-7B.txt	score: 0.8578
+________________________________________________________
+ALMA-7B: evaluating from en to cs
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 30.30 60.1/35.9/23.9/16.4 (BP = 1.000 ratio = 1.001 hyp_len = 34835 ref_len = 34787)
+output/from_english/czech/ALMA-7B.txt	score: 0.8969
+________________________________________________________
+ALMA-7B: evaluating from en to ru
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 27.71 57.0/33.2/21.6/14.5 (BP = 0.999 ratio = 0.999 hyp_len = 36450 ref_len = 36472)
+output/from_english/russian/ALMA-7B.txt	score: 0.8769
+________________________________________________________
+ALMA-7B: evaluating from is to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 36.03 67.3/43.2/30.1/21.6 (BP = 0.972 ratio = 0.973 hyp_len = 21912 ref_len = 22529)
+output/to_english/icelandic/ALMA-7B.txt	score: 0.8603
+________________________________________________________
+ALMA-7B: evaluating from de to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 30.32 63.7/37.9/24.9/16.8 (BP = 0.957 ratio = 0.958 hyp_len = 36061 ref_len = 37634)
+output/to_english/german/ALMA-7B.txt	score: 0.8418
+________________________________________________________
+ALMA-7B: evaluating from zh to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 24.21 56.4/30.2/18.0/11.2 (BP = 1.000 ratio = 1.010 hyp_len = 55224 ref_len = 54688)
+output/to_english/chinese/ALMA-7B.txt	score: 0.8035
+________________________________________________________
+ALMA-7B: evaluating from cs to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 43.79 71.8/49.8/37.0/27.8 (BP = 1.000 ratio = 1.006 hyp_len = 30850 ref_len = 30675)
+output/to_english/czech/ALMA-7B.txt	score: 0.8618
+________________________________________________________
+ALMA-7B: evaluating from ru to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 38.54 68.3/44.5/31.6/23.0 (BP = 1.000 ratio = 1.024 hyp_len = 39471 ref_len = 38529)
+output/to_english/russian/ALMA-7B.txt	score: 0.8492
+________________________________________________________
