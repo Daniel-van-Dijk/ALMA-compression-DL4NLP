@@ -27,23 +27,23 @@ source activate alma
 #     --save out/alma_7b/unstructured/gblm/
 
 # 2:4 
-# srun python main.py \
-#     --model haoranxu/ALMA-7B \
-#     --gradient_path /home/scur1755/GBLM-Pruner-Adapt/gradients/llama2/gradients_aggregrate_norm_l1_model_ALMA-7B.pth \
-#     --prune_method gblm \
-#     --nsamples 128 \
-#     --seed 0 \
-#     --sparsity_ratio 0.5 \
-#     --sparsity_type 2:4 \
-#     --save out/alma_7b/2to4/gblm/
-
-# 4:8
 srun python main.py \
-    --model meta-llama/Llama-2-7b-hf \
+    --model haoranxu/ALMA-7B \
     --gradient_path /home/scur1755/GBLM-Pruner-Adapt/gradients/llama2/gradients_aggregrate_norm_l1_model_ALMA-7B.pth \
     --prune_method gblm \
     --nsamples 128 \
     --seed 0 \
     --sparsity_ratio 0.5 \
-    --sparsity_type 4:8 \
-    --save out/alma_7b/4to8/gblm/
+    --sparsity_type 2:4 \
+    --save out/alma_7b/2to4/gblm/
+
+# 4:8
+# srun python main.py \
+#     --model meta-llama/Llama-2-7b-hf \
+#     --gradient_path /home/scur1755/GBLM-Pruner-Adapt/gradients/llama2/gradients_aggregrate_norm_l1_model_ALMA-7B.pth  \
+#     --prune_method gblm \
+#     --nsamples 128 \
+#     --seed 0 \
+#     --sparsity_ratio 0.5 \
+#     --sparsity_type 4:8 \
+#     --save out/alma_7b/4to8/gblm/

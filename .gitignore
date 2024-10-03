@@ -1,0 +1,6 @@
+secret.txt
+llm_weights
+slurm
+speed_eval/flops
+*/__pycache__
+gradients

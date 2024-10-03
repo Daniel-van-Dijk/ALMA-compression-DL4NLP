@@ -19,7 +19,10 @@ import os
 from huggingface_hub import login
 
 # Set your HF token (replace 'token' with the actual token)
-os.environ["HUGGINGFACE_TOKEN"] = "token"
+with open('secret.txt','r') as f:
+    token = f.read()
+
+os.environ["HUGGINGFACE_TOKEN"] = token
 
 # n
 login(token=os.getenv("HUGGINGFACE_TOKEN"))
@@ -113,6 +116,7 @@ def get_loaders(name, nsamples=128, seed=0, seqlen=2048, tokenizer=None):
         return get_c4(nsamples, seed, seqlen, tokenizer)
 
 def get_llm(model, cache_dir="llm_weights"):
+    print(model)
     model = AutoModelForCausalLM.from_pretrained(
         model, 
         torch_dtype=torch.float16, 
@@ -120,10 +124,18 @@ def get_llm(model, cache_dir="llm_weights"):
         low_cpu_mem_usage=True, 
         device_map="auto"
     )
+    import GPUtil
+    gpus = GPUtil.getGPUs()
+    for gpu in gpus:
+        print(f"GPU ID: {gpu.id}, Name: {gpu.name}")
+        print(f"Load: {gpu.load * 100:.1f}%")
+        print(f"Memory Free: {gpu.memoryFree:.1f}MB")
+        print(f"Memory Used: {gpu.memoryUsed:.1f}MB")
+        print(f"Memory Total: {gpu.memoryTotal:.1f}MB")
+        print(f"Temperature: {gpu.temperature} °C\n")
     print("printing gpu allocation for all the layers")
-    print(model.hf_device_map)
     print(model.config)
-    model.seqlen = 2048
+    model.seqlen = 256
     return model
 
 class gradient_computation:
@@ -190,10 +202,11 @@ if __name__ == "__main__":
 
     if "model.embed_tokens" in model.hf_device_map:
         device = model.hf_device_map["model.embed_tokens"]
+    print(f'on device {device}')
     print("loading calibdation data")
     nsamples=args.nsamples
     seed=0
-    dataloader, _ = get_loaders("c4",nsamples=nsamples,seed=seed,seqlen=2048,tokenizer=tokenizer)
+    dataloader, _ = get_loaders("wikitext2",nsamples=nsamples,seed=seed,seqlen=256,tokenizer=tokenizer)
     print("dataset loading complete")
     optimizer = AdamW(model.parameters(), lr=0.01, eps=0.01)
     optimizer.zero_grad()
