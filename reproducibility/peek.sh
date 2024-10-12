@@ -1,0 +1,1 @@
+srun -n 1 -p nvidia --gres=gpu:1 --mem=1G --nodelist=gcn15 --pty /bin/bash

@@ -4,3 +4,6 @@ slurm
 speed_eval/flops
 */__pycache__
 gradients
+distillation/2to4*
+distillation/4to8*
+distillation/*percent*

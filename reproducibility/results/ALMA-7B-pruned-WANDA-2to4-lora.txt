@@ -1,0 +1,110 @@
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to is
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to de
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to zh
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to cs
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to ru
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from is to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from de to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from zh to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from cs to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from ru to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to is
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to de
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to zh
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to cs
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to ru
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from is to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from de to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from zh to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from cs to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from ru to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to is
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to de
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to zh
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to cs
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to ru
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from is to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from de to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from zh to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from cs to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from ru to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to is
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to de
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to zh
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to cs
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to ru
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from is to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from de to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from zh to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from cs to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from ru to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to is
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 15.57 44.3/20.1/11.0/6.0 (BP = 1.000 ratio = 1.074 hyp_len = 27089 ref_len = 25233)
+output/from_english_sorted/icelandic/ALMA-7B-pruned-WANDA-2to4-lora.txt	score: 0.8098
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to de
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 24.48 55.5/30.0/18.4/11.7 (BP = 1.000 ratio = 1.030 hyp_len = 40071 ref_len = 38914)
+output/from_english_sorted/german/ALMA-7B-pruned-WANDA-2to4-lora.txt	score: 0.8439
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to zh
+BLEU|nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.4.3 = 27.20 54.9/33.2/21.2/14.2 (BP = 1.000 ratio = 1.134 hyp_len = 64937 ref_len = 57277)
+output/from_english_sorted/chinese/ALMA-7B-pruned-WANDA-2to4-lora.txt	score: 0.8289
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to cs
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 22.17 52.2/27.5/16.5/10.2 (BP = 1.000 ratio = 1.042 hyp_len = 36244 ref_len = 34787)
+output/from_english_sorted/czech/ALMA-7B-pruned-WANDA-2to4-lora.txt	score: 0.8810
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from en to ru
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 21.42 50.8/26.4/15.8/9.9 (BP = 1.000 ratio = 1.035 hyp_len = 37744 ref_len = 36472)
+output/from_english_sorted/russian/ALMA-7B-pruned-WANDA-2to4-lora.txt	score: 0.8640
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from is to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from de to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from zh to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from cs to en
+________________________________________________________
+ALMA-7B-pruned-WANDA-2to4-lora: evaluating from ru to en
+________________________________________________________

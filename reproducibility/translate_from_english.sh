@@ -14,8 +14,8 @@ module load Anaconda3/2023.07-2
 
 source activate ALMA_compression
 
-model_hf="haoranxu/ALMA-7B"
-model="ALMA-7B"
+model_hf="Max-Bosch/ALMA-7B-pruned-WANDA-2to4"
+model="ALMA-7B-pruned-WANDA-2to4"
 
 declare -A languages=(["de"]="german"
                     ["cs"]="czech"
@@ -27,16 +27,17 @@ src="en"
 
 for tgt in "${!languages[@]}"; do
     echo "$model: Translating from $src to $tgt"
-    echo "data/from_english/${languages[$tgt]}/src.txt"
-    echo "output/from_english/${languages[$tgt]}/out.txt"
+    echo "data/from_english_sorted/${languages[$tgt]}/src.txt"
+    echo "output/from_english_sorted/${languages[$tgt]}/$model.txt"
     
     python translate.py \
-        --fin "data/from_english/${languages[$tgt]}/src.txt" \
-        --fout "output/from_english/${languages[$tgt]}/$model.txt" \
+        --fin "data/from_english_sorted/${languages[$tgt]}/src.txt" \
+        --fout "output/from_english_sorted/${languages[$tgt]}/$model.txt" \
         --ckpt translate.ckpt \
         --src "$src" \
         --tgt "$tgt" \
         --dtype bfloat16 \
         --model "$model_hf" \
-        --beam 5
+        --beam 5 \
+        --batch_size 16
 done

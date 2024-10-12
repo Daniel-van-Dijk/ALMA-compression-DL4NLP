@@ -1,8 +1,16 @@
 import argparse
 import torch
+from torch import nn
+from torch.sparse import to_sparse_semi_structured, SparseSemiStructuredTensor
 # from peft import PeftModel
 from transformers import AutoModelForCausalLM, LlamaTokenizer
 from tqdm import tqdm 
+import time
+
+SparseSemiStructuredTensor._FORCE_CUTLASS = True
+@torch.compile
+def to_sparse_semi_structured_compiled(x):
+    return to_sparse_semi_structured(x)
 
 def get_parser():
     parser = argparse.ArgumentParser()
@@ -47,6 +55,13 @@ def dynamic_batching(tokenizer, texts, batch_size, max_length):
     if len(batch) > 0:
         yield batch
 
+def print_memory_usage(prefix=""):
+    """Print current GPU memory usage."""
+    allocated = torch.cuda.memory_allocated()
+    reserved = torch.cuda.memory_reserved()
+    print(f"{prefix}Allocated: {allocated / (1024 ** 2):.2f} MB, Reserved: {reserved / (1024 ** 2):.2f} MB")
+
+
 def main():
     parser = get_parser()
     args = parser.parse_args()
@@ -59,6 +74,10 @@ def main():
     # load model and tokenizer
     model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=dtype, device_map="auto")
     #model = PeftModel.from_pretrained(model, args.ckpt) # load when you have lora
+    #for fqn, module in model.named_modules():
+    #    if isinstance(module, nn.Linear) and "layer" in fqn:
+    #        print_memory_usage(f"Mod {fqn}:")
+    #        module.weight = nn.Parameter(to_sparse_semi_structured_compiled(module.weight))
     print('[1]: Done loading model...')
     model.eval()
     tokenizer = LlamaTokenizer.from_pretrained(args.model)
@@ -88,17 +107,24 @@ def main():
         # Tokenize with truncation and dynamic padding up to the longest sequence in the batch
         inputs = tokenizer(prompts, return_tensors="pt", padding=True, ).to('cuda')
         
+        t0 = time.time()
+
         # generate
-        with torch.no_grad():
+        with torch.inference_mode():
             generated_ids = model.generate(
                 input_ids=inputs.input_ids,
                 attention_mask=inputs.attention_mask,
                 num_beams=args.beam, # beam size
                 max_new_tokens=args.gen_max_tokens
             )
-
-        
         outputs = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+
+        input_len = inputs.input_ids.shape[-1]
+        output_len = generated_ids.shape[-1]
+        tokens = output_len
+        tflops = args.batch_size*0.01323*tokens*args.beam
+        time_used = tflops/312
+        print(f"outlen={output_len}, time used est. {time_used*1000:.2f}ms, real. {(time.time()-t0)*1000:.2f}ms", flush=True)
 
         # Process and write the translations
         for prompt, output in zip(prompts, outputs):

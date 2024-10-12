@@ -1,0 +1,40 @@
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from en to is
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 15.76 44.4/20.2/11.1/6.2 (BP = 1.000 ratio = 1.076 hyp_len = 27160 ref_len = 25233)
+output/from_english_sorted/icelandic/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8098
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from en to de
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 24.49 55.4/30.0/18.5/11.7 (BP = 1.000 ratio = 1.038 hyp_len = 40374 ref_len = 38914)
+output/from_english_sorted/german/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8486
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from en to zh
+BLEU|nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.4.3 = 26.85 54.4/32.7/20.8/14.0 (BP = 1.000 ratio = 1.140 hyp_len = 65303 ref_len = 57277)
+output/from_english_sorted/chinese/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8321
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from en to cs
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 21.64 51.1/26.8/16.1/9.9 (BP = 1.000 ratio = 1.066 hyp_len = 37083 ref_len = 34787)
+output/from_english_sorted/czech/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8757
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from en to ru
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 21.58 50.5/26.4/16.1/10.2 (BP = 1.000 ratio = 1.046 hyp_len = 38158 ref_len = 36472)
+output/from_english_sorted/russian/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8640
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from is to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 33.28 63.9/39.0/26.6/18.5 (BP = 1.000 ratio = 1.011 hyp_len = 22780 ref_len = 22529)
+output/to_english_sorted/icelandic/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8472
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from de to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 28.71 62.0/35.8/22.8/15.0 (BP = 0.972 ratio = 0.972 hyp_len = 36596 ref_len = 37634)
+output/to_english_sorted/german/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8371
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from zh to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 18.19 50.0/23.6/12.8/7.2 (BP = 1.000 ratio = 1.046 hyp_len = 57228 ref_len = 54688)
+output/to_english_sorted/chinese/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.7849
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from cs to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 39.42 68.6/45.3/32.5/23.9 (BP = 1.000 ratio = 1.032 hyp_len = 31651 ref_len = 30675)
+output/to_english_sorted/czech/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8500
+________________________________________________________
+ALMA-7B-pruned-GBLM-60percent-kl-r16: evaluating from ru to en
+BLEU|nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.4.3 = 35.94 66.0/41.8/29.2/20.7 (BP = 1.000 ratio = 1.052 hyp_len = 40527 ref_len = 38529)
+output/to_english_sorted/russian/ALMA-7B-pruned-GBLM-60percent-kl-r16.txt	score: 0.8401
+________________________________________________________

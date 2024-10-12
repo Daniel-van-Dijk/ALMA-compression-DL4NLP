@@ -30,13 +30,15 @@ def get_attn_flops(model, seq_length: int):
     print(f"Attn FLOPs = {count/1e12} TFLOPs")
     return count/1e12 # return in tflops
 
+ds = []
+
 for max_seq_length in [64,128,256,512,1024,2048,4096]:
 
     batch_size = 1
 
-    print(f'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n--- Starting calculation flops for seq_len={max_seq_length} ---')
+    # print(f'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n--- Starting calculation flops for seq_len={max_seq_length} ---')
 
-    flops, macs, params = calculate_flops(model=model, input_shape=(batch_size, max_seq_length), transformer_tokenizer=tokenizer) # default input shape: (1, 128)
+    flops, macs, params = calculate_flops(model=model, input_shape=(batch_size, max_seq_length), transformer_tokenizer=tokenizer, print_results=False, print_detailed=False) # default input shape: (1, 128)
     
 
     flops, unit = flops.split()
@@ -50,8 +52,20 @@ for max_seq_length in [64,128,256,512,1024,2048,4096]:
     flops += attn_flops
 
     A100_flops = 312
-
-    print(f"Expected runtime on A100 for (batch_size={batch_size}, max_seq_length={max_seq_length}): {flops/A100_flops*1000} ms \n")
+    ds.append({
+        "seq_length": max_seq_length,
+        "flops": flops,
+        "linear flops": linear_flops,
+        "qkv flops": attn_flops
+    })
+    # print(f"Expected runtime on A100 for (batch_size={batch_size}, max_seq_length={max_seq_length}): {flops/A100_flops*1000} ms \n")
     
-    print(f"{model_name} FLOPs:{flops} TFLOPS  MACs:{macs}  Params:{params} \n")
-    print(f"sqr_flops: {attn_flops} TFLOPS,  linear_flops: {linear_flops} TFLOPS\n")
+    # print(f"{model_name} FLOPs:{flops} TFLOPS  MACs:{macs}  Params:{params} \n")
+    # print(f"sqr_flops: {attn_flops} TFLOPS,  linear_flops: {linear_flops} TFLOPS\n")
+
+
+print(f"{model_name} results:")
+
+import json
+print(json.dumps(ds, indent=2))
+
